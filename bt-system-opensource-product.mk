@@ -10,28 +10,30 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/qcom/common
 
 ifeq ($(TARGET_USE_QTI_BT_STACK), true)
 PRODUCT_PACKAGES += libbluetooth_qti
-PRODUCT_PROPERTY_OVERRIDES += ro.bluetooth.library_name=libbluetooth_qti.so
 endif #TARGET_USE_QTI_BT_STACK
 
 PRODUCT_PACKAGES += Bluetooth
 PRODUCT_PACKAGES += bt_logger
 PRODUCT_PACKAGES += libbt-logClient
 PRODUCT_PACKAGES += BluetoothExt
-# BT Related Test app
-#PRODUCT_PACKAGES_DEBUG += BATestApp
-#PRODUCT_PACKAGES_DEBUG += BTTestApp
-#PRODUCT_PACKAGES_DEBUG += HidTestApp
+PRODUCT_PACKAGES += libbtconfigstore
+# BT Related Test app & Tools
+PRODUCT_PACKAGES_DEBUG += BATestApp
+PRODUCT_PACKAGES_DEBUG += BTTestApp
+PRODUCT_PACKAGES_DEBUG += HidTestApp
+PRODUCT_PACKAGES_DEBUG += btsnoop
+PRODUCT_PACKAGES_DEBUG += gatt_tool_qti_internal
+PRODUCT_PACKAGES_DEBUG += l2test_ertm
+PRODUCT_PACKAGES_DEBUG += rfc
 endif #BOARD_HAVE_BLUETOOTH_QCOM
 
 
 #FM
-PRODUCT_PACKAGES += qcom.fmradio
 PRODUCT_PACKAGES += libqcomfm_jni
 PRODUCT_PACKAGES += libfmjni
 PRODUCT_PACKAGES += fm_helium
 PRODUCT_PACKAGES += libfm-hci
 PRODUCT_PACKAGES += FM2
-#PRODUCT_PACKAGES += FMRecord
 
 ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
 #PRODUCT_BOOT_JARS += qcom.fmradio
